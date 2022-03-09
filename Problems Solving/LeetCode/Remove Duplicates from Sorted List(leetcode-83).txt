@@ -1,0 +1,35 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        
+        ListNode* currentNode=head;
+        
+        if(currentNode==nullptr)return currentNode;
+        
+        
+        // we will compare two node. So, this two node must be visible(not null). If we get one node is null then we don't need to compare. 
+        while(currentNode!=nullptr and currentNode->next!=nullptr){
+
+            if(currentNode->val==currentNode->next->val){
+                currentNode->next=currentNode->next->next;
+            }
+            else  {
+                currentNode=currentNode->next;
+            }
+
+        }
+        return head;
+        
+        
+    }
+};
