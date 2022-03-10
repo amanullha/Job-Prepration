@@ -1,0 +1,55 @@
+/*
+
+1836. Remove Duplicates From an Unsorted Linked List
+
+
+Time complexity: O(N)
+Memory complexity: O(N)
+
+*/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* deleteDuplicatesUnsorted(ListNode* head) {
+        
+        unordered_map<int,int>isDuplicate;
+        
+        ListNode* hashNode=head;
+        
+        while(hashNode!=NULL)
+        {
+            isDuplicate[hashNode->val]++;
+            hashNode=hashNode->next;
+        }
+        
+        ListNode* curr=new ListNode(0,head);
+        
+        ListNode* returnNode=curr;
+        
+        while(curr->next!=NULL){
+            
+            int x=curr->next->val;
+            
+            if(isDuplicate[x]>1){
+                
+                curr->next=curr->next->next;
+            }
+            else{
+                curr=curr->next;
+            }
+        }
+        
+        return returnNode->next;
+        
+    }
+};
