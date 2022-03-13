@@ -1,0 +1,81 @@
+// Method : 1
+
+class Solution {
+public:
+    int threeSumSmaller(vector<int>& nums, int target) {
+        int  n=nums.size();
+        
+        if(n<3)return 0;
+        
+        sort(nums.begin(),nums.end());
+       // reverse(nums.begin(),nums.end());
+        
+        int triplets=0;
+        
+     for(int i=n-1;i-2>=0; i--){
+         for(int j=i-1; j-1>=0;j--)
+         {
+             int x=(target-1)-nums[i]-nums[j];
+             
+             int k=upper_bound(nums.begin(),nums.begin()+(j-1)+1,x)-nums.begin()-1;
+             
+            // cout<<"i: "<<i<<" j "<<j<<" k "<<k<<" x: "<<x<<" tri "<<triplets<<endl;
+             if(k>=0){
+                k++;
+                // cout<<"i: "<<i<<" j "<<j<<" k "<<k<<" tri "<<triplets<<endl;
+                 triplets+=k;
+             }
+           // cout<<"i: "<<i<<" j "<<j<<" k "<<k<<" x: "<<x<<" tri "<<triplets<<endl;
+
+             
+         }
+     }
+       
+        
+        return triplets;
+    }
+};
+
+
+
+// Method : 2
+
+class Solution {
+public:
+    int threeSumSmaller(vector<int>& nums, int target) {
+        int  n=nums.size();
+        
+        if(n<3)return 0;
+        
+        sort(nums.begin(),nums.end());
+        
+        int triplets=0;
+        
+        for(int i=0;i<n-2;i++){
+            triplets+=twoSum(nums,i+1,target-nums[i]);
+        }
+        
+        return triplets;
+    }
+    
+    int twoSum(vector<int>& nums,int start,int target)
+    {
+        int count=0;
+        
+        int left=start;
+        int right=nums.size()-1;
+        
+        while(left<right){
+            
+            int sum=nums[left]+nums[right]; 
+            
+            if(sum<target){
+                
+                count+=(right-left);
+                left++;
+            }
+            else right--;
+        }
+    return count;
+    }
+};
