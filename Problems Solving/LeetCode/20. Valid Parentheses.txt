@@ -1,0 +1,35 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        
+        int x=0;
+        
+        
+        stack<char>sk;
+        
+        
+        for(char c:s){
+            
+            if(c=='(' || c=='{' || c=='['){
+                
+                sk.push(c);
+                
+            }
+            else{
+                
+                if(sk.empty()==true)return false;
+                
+                char p=sk.top();
+                sk.pop();
+                
+                if(c==')' and p!='(') return false;
+                if(c=='}' and p!='{') return false;
+                if(c==']' and p!='[') return false;
+                
+            }
+        }
+        
+    
+        return sk.size()==0;
+    }
+};
