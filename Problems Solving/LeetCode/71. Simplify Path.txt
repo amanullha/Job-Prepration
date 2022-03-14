@@ -29,3 +29,58 @@ var simplifyPath = function(path) {
     
     
 };
+
+// solution with C++
+
+/*
+"/home/"
+"/../"
+"/home//foo/"
+
+*/
+
+class Solution {
+public:
+    string simplifyPath(string path) {
+        
+        path+='/';
+            
+        stack<string>s;
+        
+        string x="";
+        
+        for(char p:path){
+            
+            if(p=='/'){
+                cout<<endl<<"x : "<<x<<endl;
+                
+                if(x.size()==0 || x=="."){
+                    x="";
+                }
+                else if(x==".."){
+                    if(s.size()!=0)
+                    s.pop();
+                    x="";
+                }
+                else{
+                   s.push(x);
+                    x="";
+                }
+            }else{
+                x+=p;
+            }
+        }
+        
+        x="";
+        
+        while(!s.empty()){
+            string xx=s.top();
+            reverse(xx.begin(),xx.end());
+            x+=xx+'/';
+            s.pop();
+        }
+        reverse(x.begin(),x.end());
+        if(x.size()==0)x="/";
+        return x;
+    }
+};
