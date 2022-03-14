@@ -1,0 +1,31 @@
+// solution with JavaScript
+
+/**
+ * @param {string} path
+ * @return {string}
+ */
+var simplifyPath = function(path) {
+    
+    
+    // split array with slash(/)
+    
+    let arr=path.split('/');
+    // remove single dot(.)
+    arr=arr.filter(x=>x!='.');
+    // remove empty path
+    arr=arr.filter(x=>x!='');
+    
+    let ans=new Array();
+    for(let p of arr){
+        
+        if(p=='..')ans.pop();
+        else ans.push(p);
+        
+    }
+    
+    ans='/'+ans.join('/');
+    
+    return ans;
+    
+    
+};
