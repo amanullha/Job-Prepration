@@ -21,3 +21,22 @@ public:
 
 // solution with JavaScript
 
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSubArray = function(nums) {
+    
+        
+        let maxSum=-10000007;
+        let sum=0;
+        
+        for(let x of nums){
+            sum+=x;
+            if(sum>maxSum)maxSum=sum;
+            if(sum<0) sum=0;
+        }
+        
+        return maxSum;
+
+};
