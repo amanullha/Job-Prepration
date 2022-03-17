@@ -1,0 +1,48 @@
+// method 1
+
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        
+        int k=0;
+        for(int &x:nums){
+            if(x==val)x=-1,k++;
+        }
+        
+        int j=0;
+        
+        for(int i=0;i<nums.size();i++){
+            
+            if(nums[i]!=-1)
+            {
+                swap(nums[i],nums[j++]);
+            }
+        }
+    return nums.size()-k;
+    }
+};
+
+
+// method 2
+
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        
+        int k=0;
+     
+        
+        int j=0;
+        
+        for(int i=0;i<nums.size();i++){
+            
+            if(nums[i]!=val)
+            {
+                k++;
+                swap(nums[i],nums[j++]);
+            }
+        }
+       // cout<<j<<endl;
+    return j;
+    }
+};
