@@ -1,1 +1,3 @@
 https://leetcode.com/problems/maximum-product-subarray/
+https://leetcode.com/problems/basic-calculator-iii/
+https://leetcode.com/problems/majority-element-ii/
