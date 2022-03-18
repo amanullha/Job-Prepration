@@ -1,0 +1,29 @@
+class Solution {
+public:
+    double myPow(double x, long n) {
+        
+        bool f=true;
+        if(n<0){
+            f=false;
+            n*=-1;
+        }
+        
+        double ans=pow(x,n);
+        
+        if(f)return ans;
+        else return 1/ans;
+    }
+    
+    double pow(double x, long n){
+        
+        if(n==0)return 1;
+        if(n==1)return x;
+        
+        if(n&1)return x*pow(x,n-1);
+        else{
+            
+            double ans=pow(x,n/2);
+            return ans*ans;
+        }
+    }
+};
