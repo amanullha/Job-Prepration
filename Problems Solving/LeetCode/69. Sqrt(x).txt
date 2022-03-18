@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int mySqrt(long long x) {
+    
+     return findRoot(x);   
+    }
+    
+    long long findRoot(long long x){
+        
+        long long l=1,r=x;
+        int cholbe=200;
+        
+        while(cholbe--){
+            
+            long long mid=(l+r)/2;
+            
+            long long root=mid*mid;
+            
+            if(root==x)return mid;
+            
+            if(root>x)r=mid-1;
+            else l=mid;
+        }
+        
+    if(r*r<x)return r;
+    else return l;
+    
+    }
+};
