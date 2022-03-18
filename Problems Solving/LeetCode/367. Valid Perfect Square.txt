@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool isPerfectSquare(long long num) {
+        return findRoot(num);
+    }
+    
+    bool findRoot(long long x){
+        
+        long long l=1,r=x;
+        int cholbe=200;
+        
+        while(cholbe--){
+            
+            long long mid=(l+r)/2;
+            
+            long long root=mid*mid;
+            
+            if(root==x)return true;
+            
+            if(root>x)r=mid-1;
+            else l=mid;
+        }
+        
+    if(r*r==x || l*l==x)return true;
+    
+    else return false;
+    }
+};
