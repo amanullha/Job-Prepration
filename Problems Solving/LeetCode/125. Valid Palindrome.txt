@@ -1,0 +1,32 @@
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        
+        string ss="";
+        
+        for(char x:s){
+            
+            if((x>='0' and x<='9') || (65<=x && x<=90) || (97<=x && x<=122)) 
+            {
+                ss+=lowerCase(x);
+            }
+            
+        }
+       // cout<<s<<endl;
+       // cout<<ss<<endl;
+        
+        s=ss;
+        reverse(s.begin(),s.end());
+        return s==ss;
+        
+    }
+        
+char lowerCase(char c)
+{
+    if(65<=c && c<=90)
+        return c+32;
+    else 
+        return c;
+}
+    
+};
