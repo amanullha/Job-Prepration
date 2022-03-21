@@ -1,0 +1,45 @@
+class Solution {
+public:
+    vector<string> letterCombinations(string digits) {
+        
+        if(digits.size()==0)return {};
+        
+        vector<string>letters;
+        
+        letters.push_back("");
+        letters.push_back("");
+        
+        
+        letters.push_back("abc");
+        letters.push_back("def");
+        letters.push_back("ghi");
+        letters.push_back("jkl");
+        letters.push_back("mno");
+        letters.push_back("pqrs");
+        letters.push_back("tuv");
+        letters.push_back("wxyz");
+        
+   vector<string>ans;
+    s(letters, digits,0,"",ans);
+    
+    return ans;
+    }
+    
+    void s(vector<string>letters,string digit,int startIdx,string currStr,vector<string> &ans){
+        
+        if(currStr.size()==digit.size()){
+            ans.push_back(currStr);
+            return ;
+        }
+        
+        
+        int d=digit[startIdx];
+        
+        string v=letters[d-'0'];
+        
+        for(char x:v){
+            
+            s(letters, digit,startIdx+1,currStr+x,ans);
+        }
+    }
+};
