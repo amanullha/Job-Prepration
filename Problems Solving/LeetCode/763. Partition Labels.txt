@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<int> partitionLabels(string s) {
+        
+        unordered_map<char,int>un;
+        
+        for(int i=0;i<s.size();i++)
+        {
+            un[s[i]]=i;
+        }
+        
+        
+        int i=0;
+        vector<int>ans;
+        while(i<s.size()){
+            
+            int iMax=un[s[i]];
+            
+            for(int k=i+1;k<=iMax;k++)
+            {
+                int x=un[s[k]];
+                if(x>iMax)iMax=x;
+            }
+            
+            int len=iMax-i+1;
+            ans.push_back(len);
+            i=iMax+1;
+        }
+
+    return ans;
+    }
+};
