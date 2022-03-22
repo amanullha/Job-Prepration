@@ -1,0 +1,19 @@
+// The API isBadVersion is defined for you.
+// bool isBadVersion(int version);
+
+class Solution {
+public:
+    int firstBadVersion(int n) {
+        
+        long long i=0;
+        long long j=n;
+        
+        while(i<=j){
+            
+            long long m=(i+j)/2;
+            if(isBadVersion(m)==true)j=m-1;
+            else i=m+1;
+        }
+        return i;
+    }
+};
