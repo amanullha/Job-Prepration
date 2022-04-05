@@ -5,4 +5,4 @@ https://leetcode.com/problems/longest-substring-without-repeating-characters/
 https://leetcode.com/problems/reverse-integer/
 https://leetcode.com/problems/valid-triangle-number/
 https://leetcode.com/problems/rotate-array/
-https://leetcode.com/problems/reverse-words-in-a-string-ii/
+https://leetcode.com/problems/reverse-words-in-a-string-ii/https://leetcode.com/problems/find-the-duplicate-number/
