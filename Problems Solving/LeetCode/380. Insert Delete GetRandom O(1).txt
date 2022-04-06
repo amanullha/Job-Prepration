@@ -1,0 +1,99 @@
+solution 1: 
+class RandomizedSet {
+    unordered_map<int,bool>bucket;
+    vector<int>v;
+public:
+    
+    RandomizedSet() {
+        
+        
+    }
+    
+    bool insert(int val) {
+        if(bucket.count(val))return false;
+        else{
+            bucket[val]=true;
+            return true;
+        }
+    }
+    
+    bool remove(int val) {
+        if(bucket.count(val)){
+            
+            bucket.erase (val);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    int getRandom() {
+        v.clear();
+        for(auto i:bucket)v.push_back(i.first);
+        return v[rand()%v.size()];
+    }
+};
+
+/**
+ * Your RandomizedSet object will be instantiated and called as such:
+ * RandomizedSet* obj = new RandomizedSet();
+ * bool param_1 = obj->insert(val);
+ * bool param_2 = obj->remove(val);
+ * int param_3 = obj->getRandom();
+ */
+
+
+
+ solution 2: 
+
+ class RandomizedSet {
+    unordered_map<int,int>bucket;
+    vector<int>v;
+public:
+    
+    RandomizedSet() {
+        
+        
+    }
+    
+    bool insert(int val) {
+        if(bucket.count(val))return false;
+        else{
+            v.push_back(val);
+            bucket[val]=v.size()-1;
+            return true;
+        }
+    }
+    
+    bool remove(int val) {
+        if(bucket.count(val)){
+            
+            int idx=bucket[val];
+            
+            swap(v[v.size()-1],v[idx]);
+            
+            bucket[v[idx]]=idx;
+            v.pop_back();
+            
+            bucket.erase (val);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    int getRandom() {
+        
+        return v[rand()%v.size()];
+    }
+};
+
+/**
+ * Your RandomizedSet object will be instantiated and called as such:
+ * RandomizedSet* obj = new RandomizedSet();
+ * bool param_1 = obj->insert(val);
+ * bool param_2 = obj->remove(val);
+ * int param_3 = obj->getRandom();
+ */
