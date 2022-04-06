@@ -1,0 +1,52 @@
+// 1. 40ms taken to run and O(N) space and time
+
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        
+        unordered_set<int>found(nums.begin(),nums.end());
+        
+        int mx=0;
+        
+        for(int i:found){
+            if(found.count(i-1))continue;
+            else{
+                int c=1;
+                int x=i+1;
+                
+                while(found.count(x++))c++;
+                mx=max(mx,c);
+                
+            }
+        }
+        return mx;
+    }
+};
+
+// 1. 38 ms taken to run and O(1) space and O(logN) time
+
+
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        
+        if(nums.size()==0)return 0;
+        
+        sort(nums.begin(),nums.end());
+        
+        
+        int mx=1;
+        int c=1;
+        
+        for(int i=1;i<nums.size();i++){
+            int d=nums[i]-nums[i-1];
+            
+            if(d==1)c++;
+            else if(d==0)continue;
+            else c=1;
+            
+            mx=max(mx,c);
+        }
+        return mx;
+    }
+};
