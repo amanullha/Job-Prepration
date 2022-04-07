@@ -1,0 +1,56 @@
+solution 1:
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+       
+        
+        int n=nums.size();
+        vector<pair<int,int>>sortVals;
+        for(int i=0;i<n;i++){
+            sortVals.push_back({nums[i],i});
+        }
+        
+        sort(sortVals.begin(),sortVals.end());
+        
+        
+        
+        int leftIndex=0,rightIndex=nums.size()-1;
+        
+        while(leftIndex<rightIndex){
+            
+            int sum=sortVals[leftIndex].first+sortVals[rightIndex].first;
+            
+            if(sum==target)return {sortVals[leftIndex].second,sortVals[rightIndex].second};
+            if(sum>target)rightIndex--;
+            else leftIndex++;
+        }
+        
+        return {leftIndex,rightIndex};
+    }
+};
+
+
+solution 2:
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        
+        unordered_map<int,int>un;
+        vector<int>sol;
+        for(int i=0;i<nums.size();i++){
+            
+            if(un.count(target-nums[i])){
+                sol.push_back(un[target-nums[i]]);
+                sol.push_back(i);
+                break;
+                un.erase(target-nums[i]);
+                
+            }
+            else{
+                un[nums[i]]=i;
+            }
+        }
+        return sol;
+    }
+};
