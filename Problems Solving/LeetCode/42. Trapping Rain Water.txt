@@ -1,0 +1,75 @@
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        
+        int n=height.size();
+
+        int total=0;
+        int left=0,right=n-1;
+
+        int leftMax=height[left];
+        int rightMax=height[right];
+        
+        
+        while(left<right){
+            
+            int leftVal=height[left];
+            int rightVal=height[right];
+            
+            if(leftVal<leftMax){
+                total+=(min(leftMax,rightMax)-leftVal);
+            }
+            else if(leftVal>leftMax)leftMax=leftVal;
+            
+            if(rightVal<rightMax){
+                total+=(min(leftMax,rightMax)-rightVal);
+            }
+            else if(rightVal>rightMax)rightMax=rightVal;
+            
+            if(leftVal>=rightVal)right--;
+            else left++;
+            
+        }
+        
+        
+        return total;
+        
+    }
+};class Solution {
+public:
+    int trap(vector<int>& height) {
+        
+        int n=height.size();
+
+        int total=0;
+        int left=0,right=n-1;
+
+        int leftMax=height[left];
+        int rightMax=height[right];
+        
+        
+        while(left<right){
+            
+            int leftVal=height[left];
+            int rightVal=height[right];
+            
+            if(leftVal<leftMax){
+                total+=(min(leftMax,rightMax)-leftVal);
+            }
+            else if(leftVal>leftMax)leftMax=leftVal;
+            
+            if(rightVal<rightMax){
+                total+=(min(leftMax,rightMax)-rightVal);
+            }
+            else if(rightVal>rightMax)rightMax=rightVal;
+            
+            if(leftVal>=rightVal)right--;
+            else left++;
+            
+        }
+        
+        
+        return total;
+        
+    }
+};
