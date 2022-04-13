@@ -1,0 +1,83 @@
+solution 1:
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        
+        unordered_map<char,int>seen;
+        
+        int maxLen=0;
+        int passIndex=0;
+        int lastRepeatIndex=0;
+        
+        for(char c:s)
+        {
+            if(seen.count(c))
+            {
+                int k=seen[c];
+                
+                int gotRepeatIndex=k+1;
+                
+                while(k>=lastRepeatIndex){
+                    
+                        seen.erase(s[k--]);
+                }
+                seen[c]=passIndex;
+                
+                lastRepeatIndex=gotRepeatIndex;
+          
+            }
+            else
+            {
+                seen[c]=passIndex;
+            }
+            
+            if(seen.size()>maxLen)
+            {
+                maxLen=seen.size();
+            }
+            
+          passIndex++;
+        }
+        
+        return maxLen;
+    }
+};
+
+
+
+solution 2: 
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+       
+        vector<int>seen(256,0);
+        
+        int left=0,right=0,maxLen=0,n=s.size(),flag=false;
+        
+        while(right<n){
+            
+            seen[s[right]]++;
+            
+            if(seen[s[right]]>1){
+                flag=true;
+            }
+            
+            if(flag){
+                while(seen[s[right]]>1){
+                    seen[s[left++]]--;
+                }
+                flag=false;
+            }
+            
+            if(right-left+1>maxLen){
+                maxLen=right-left+1;
+            }
+            right++;
+            
+        }
+        
+       return maxLen;
+    }
+};
