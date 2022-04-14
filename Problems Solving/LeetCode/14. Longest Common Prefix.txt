@@ -1,0 +1,38 @@
+/*
+
+
+
+Time complexity: O(ArrayLength*StringLength)
+Memory Complexity: O(1)
+
+
+
+*/
+
+
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+
+        bool match=true;
+        int i=0;
+        
+        string s=strs[0];
+        
+        while(i<s.size()){
+            
+            for(string ss:strs){
+                
+                if(ss[i]!=s[i]){
+                    match=false;
+                    break;
+                }
+            }
+            if(!match){
+                break;
+            }
+            i++;
+        }
+        return s.substr(0,i);
+    }
+};
