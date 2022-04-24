@@ -1,0 +1,40 @@
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        
+        unordered_map<long long,vector<string>>have;
+        
+        for(string s:strs){
+            
+            long long h=hash(s);
+            
+            if(have.count(h)){
+                have[h].push_back(s);
+            }else{
+                have[h].push_back({s});
+            }
+        }
+        
+        vector<vector<string>>ans;
+        
+        for(auto s:have){
+            
+            ans.push_back(s.second);
+            
+        }
+        
+   return ans;
+    }
+    
+    
+        long long hash(string str){
+            
+        long long base=113;
+        long long hashVal = (str[0]-'a'+1)+base;
+            
+        for(int i = 1; i < str.size();i++){
+            hashVal = (hashVal * (base + (str[i] - 'a' + 1))) % 1000000007;
+        }
+        return hashVal;
+    }
+};

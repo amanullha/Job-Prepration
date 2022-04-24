@@ -21,7 +21,6 @@ public:
 
 
 Solution : 2
-
 /*
 
 Time complexity: O(N) || size of s or t
@@ -38,19 +37,13 @@ public:
     
     // it different from as usual hash function 
     // here you will get same value for same characture, will not depend on characture positions
-    long hash(string s){
-        
-        
-        long base=10000007;
-        long hashVal=(s[0]-'a'+1)*base;
-       
-        
-        for(int i=1;i<s.size();i++){
+    long long hash(string str){
             
-            long  hs=((s[i]-'a'+1)*base)%1000000007;
+        long long base=113;
+        long long hashVal = (str[0]-'a'+1)+base;
             
-            hashVal=(hashVal*hs)%1000000007;
-            
+        for(int i = 1; i < str.size();i++){
+            hashVal = (hashVal * (base + (str[i] - 'a' + 1))) % 1000000007;
         }
         return hashVal;
     }
